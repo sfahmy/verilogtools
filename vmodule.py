@@ -38,17 +38,14 @@ ports = [a.strip().replace(' reg ',' ').replace(' wire ',' ') for a in module_po
 # print ports
 
 # Remove superfluous spaces in port index
-ports_a = [re.sub(r'\[\s*(\d+)\s*:\s*?(\d+)\s*\]', r'[\1:\2]', a) for a in ports]
-
-# Ensure a space after square brackets for subsequent split
-ports_b = [re.sub(r'\]([a-zA-Z])', r'] \1', b) for b in ports_a]
+ports_a = [re.sub(r'\[\s*(\d+)\s*:\s*?(\d+)\s*\]\s*(.)', r'[\1:\2] \3', a) for a in ports]
 
 # Construct a list of tuples for input and output ports
 # Each tuple is the port name, width, MSB index, LSB index
 in_ports = []
 out_ports= []
 inout_ports= []
-for a in ports_b:
+for a in ports_a:
 	a_split= a.split()
 	# print a_split
 	if len(a_split) == 3:
