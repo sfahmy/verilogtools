@@ -1,7 +1,7 @@
-=About=
+#About#
 This respository will hold a series of tools for procesing Verilog files, all written in Python.
 
-==`vmodule.py`==
+##vmodule.py##
 Usage:
 `./vmodule.py filename.v`
 
